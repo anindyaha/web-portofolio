@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anindia Haliza - Portfolio</title>
+    <meta name="description" content="Portfolio Anindia Haliza Ardyanti - Information Systems Graduate, Marketing & IT Professional">
+    <meta name="keywords" content="Anindia Haliza, Portfolio, Sistem Informasi, Marketing, IT, Surabaya">
+    <meta name="author" content="Anindia Haliza Ardyanti">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="alternate icon" href="./favicon.ico">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -14,8 +21,8 @@
             --color-surface: #1a1a1a;
             --color-text: #ffffff;
             --color-text-muted: #a0a0a0;
-            --color-accent: #00ff88;
-            --color-accent-dim: #00cc6a;
+            --color-accent: #ff9d5c;
+            --color-accent-dim: #ff8c42;
             --color-border: #2a2a2a;
         }
 
@@ -43,8 +50,8 @@
             z-index: -1;
             opacity: 0.15;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 200, 255, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(255, 157, 92, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 140, 66, 0.1) 0%, transparent 50%);
             animation: drift 20s ease-in-out infinite;
         }
 
@@ -60,11 +67,11 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--color-border);
             animation: slideDown 0.6s ease-out;
@@ -86,6 +93,7 @@
             font-size: 1.5rem;
             font-weight: 900;
             letter-spacing: -1px;
+            z-index: 1001;
         }
         
         .logo span {
@@ -96,6 +104,7 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -132,6 +141,37 @@
 
         .nav-links a.active::after {
             width: 100%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-text);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+            background: var(--color-accent);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+            background: var(--color-accent);
         }
 
         /* Hero Section */
@@ -176,7 +216,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, transparent 100%);
+            background: linear-gradient(135deg, rgba(255, 157, 92, 0.1) 0%, transparent 100%);
             z-index: 1;
         }
 
@@ -261,7 +301,7 @@
         .btn-primary:hover {
             background: var(--color-accent-dim);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 157, 92, 0.3);
         }
 
         .btn-secondary {
@@ -435,7 +475,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.1), transparent);
+            background: radial-gradient(circle at 50% 50%, rgba(255, 157, 92, 0.1), transparent);
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -602,11 +642,56 @@
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 1.5rem 5%;
+                padding: 1rem 5%;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             .nav-links {
-                gap: 1.5rem;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                transition: right 0.4s ease;
+                border-left: 1px solid var(--color-border);
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                opacity: 0;
+                transform: translateX(50px);
+                animation: fadeInRight 0.5s forwards;
+            }
+
+            .nav-links.active li:nth-child(1) { animation-delay: 0.1s; }
+            .nav-links.active li:nth-child(2) { animation-delay: 0.2s; }
+            .nav-links.active li:nth-child(3) { animation-delay: 0.3s; }
+            .nav-links.active li:nth-child(4) { animation-delay: 0.4s; }
+            .nav-links.active li:nth-child(5) { animation-delay: 0.5s; }
+
+            @keyframes fadeInRight {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
             }
 
             .hero {
@@ -663,6 +748,24 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                height: 380px;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
         /* Scroll Animation */
         .fade-in {
             opacity: 0;
@@ -682,7 +785,14 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">Anindia<span>.</span></div>
-        <ul class="nav-links">
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -709,92 +819,7 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="section-header fade-in">
-            <div class="section-label">Career Journey</div>
-            <h2 class="section-title">Pengalaman Kerja</h2>
-            <p class="section-description">Perjalanan karir saya selama 2+ tahun di berbagai bidang marketing, admin, dan IT.</p>
-        </div>
-
-        <div class="experience-timeline">
-            <!-- Experience 1 -->
-            <div class="experience-card fade-in">
-                <div class="experience-period">November 2024 - Sekarang</div>
-                <div class="experience-content">
-                    <h3 class="experience-title">Marketing Executive Officer</h3>
-                    <div class="experience-company">PT. Ciputra Development / Citraland Surabaya</div>
-                    <ul class="experience-list">
-                        <li>Mencari dan menarik calon pembeli dengan mempromosikan properti secara efektif</li>
-                        <li>Melakukan presentasi, negosiasi, dan closing penjualan</li>
-                        <li>Berhasil melakukan penjualan direct 5 rumah dalam waktu 8 bulan kerja</li>
-                        <li>Mendampingi proses administrasi pembelian dan pemberkasan KPR bank</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Experience 2 -->
-            <div class="experience-card fade-in">
-                <div class="experience-period">Januari 2024 - Agustus 2024</div>
-                <div class="experience-content">
-                    <h3 class="experience-title">Admin & Public Relation</h3>
-                    <div class="experience-company">CV. In Service Apartment</div>
-                    <ul class="experience-list">
-                        <li>Memasarkan untuk menjual/menyewakan apartemen Pakuwon Group di kawasan Pakuwon Mall</li>
-                        <li>Menjalin komunikasi kepada partner kerjasama (PT. Chiyoda International Indonesia, PT. Jatim Taman Steel, PT. Mitsubishi Manufacture Mfg)</li>
-                        <li>Membuat laporan terkait tagihan penyewaan apartemen beserta biaya lainnya</li>
-                        <li>Membuat surat perjanjian sewa apartemen kepada pihak yang bersangkutan</li>
-                        <li>Menyambut dan melayani tamu yang datang dari luar/dalam negeri</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Experience 3 -->
-            <div class="experience-card fade-in">
-                <div class="experience-period">Mei 2023 - Desember 2023</div>
-                <div class="experience-content">
-                    <h3 class="experience-title">Marketing & Public Relation</h3>
-                    <div class="experience-company">PT. Indo Media Universal / Dezora Cafe & Resto</div>
-                    <ul class="experience-list">
-                        <li>Memasarkan cafe dengan membuat strategi pemasaran dengan mengunjungi perusahaan di kawasan sekitarnya</li>
-                        <li>Menyelenggarakan event dengan berkolaborasi dengan brand kosmetik</li>
-                        <li>Menjalin komunikasi dengan pengunjung cafe</li>
-                        <li>Memberi diskon makanan tiap hari dan jam tertentu</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Experience 4 -->
-            <div class="experience-card fade-in">
-                <div class="experience-period">Agustus 2023 - Oktober 2023</div>
-                <div class="experience-content">
-                    <h3 class="experience-title">Kerja Praktik / Magang</h3>
-                    <div class="experience-company">Biro Administrasi Pimpinan Provinsi Jawa Timur</div>
-                    <ul class="experience-list">
-                        <li>Membuat konten video penyambutan yang ditayangkan di lobby instansi</li>
-                        <li>Membuat laporan alur proses bisnis penyuratan untuk atasan dan para staff</li>
-                        <li>Membantu kegiatan administrasi terkait nota perjalanan dinas, SPT pajak gaji pegawai dan pajak keperluan lainnya</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Experience 5 -->
-            <div class="experience-card fade-in">
-                <div class="experience-period">Januari 2022 - Desember 2022</div>
-                <div class="experience-content">
-                    <h3 class="experience-title">Social Media Specialist & Content Creator</h3>
-                    <div class="experience-company">PT. Jaya Utama</div>
-                    <ul class="experience-list">
-                        <li>Mengoperasikan beberapa akun online shop (Shasminaku, Sneaker Super, Super Kicks)</li>
-                        <li>Membuat konten rutin tiap hari di sosial media seperti TikTok, Facebook, dan e-commerce</li>
-                        <li>Memantau insight sosial media dan e-commerce yang digunakan</li>
-                        <li>Membuat promosi penjualan di sosial media serta e-commerce seperti iklan produk dan live streaming</li>
-                        <li>Mengelola pembiayaan iklan yang digunakan dari e-commerce</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- Projects Section -->
     <section id="projects">
@@ -994,6 +1019,31 @@
     </footer>
 
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
         // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
